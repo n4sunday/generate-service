@@ -1,4 +1,4 @@
-module.exports = (PDFDocument, blobStream, project, iframe, fileSaver, PdfTable) => {
+module.exports = (PDFDocument, blobStream, project, container, iframe, fileSaver, PdfTable) => {
   // create a document and pipe to a blob
   var doc = new PDFDocument();
   var table = new PdfTable(doc, {

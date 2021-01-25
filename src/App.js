@@ -1,46 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css';
-import Editor from './Editor';
-import Viewer from './Viewer';
-import makePDF from './makePDF';
-import { ProjectService } from './service';
-import queryString from 'query-string'
+import BSCP_APP from './components/bscp';
 
-
-const defaultValue = makePDF
-  .toString()
-  .split('\n')
-  .slice(1, -1)
-  .join('\n')
-  .replace(/^ {2}/gm, '');
 
 function App() {
-  // window.close()
-  const search = queryString.parse(window.location.search)
-  const [value, setValue] = useState(defaultValue);
-  const [project, setProject] = useState({});
-
-  const onChange = (newValue) => {
-    setValue(newValue);
-  }
-
-  const fetchData = async () => {
-    const { id, token } = search
-    let res = await ProjectService.get(id, token)
-    console.log("RES", res.data);
-    if (res.data) {
-      setProject(res.data)
-    }
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
   return (
     <React.Fragment>
-      <Editor value={value} onChange={onChange} />
-      <Viewer value={value} project={project} />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path={'/generate/bscp'} component={BSCP_APP} />
+        </Switch>
+      </BrowserRouter>
     </React.Fragment>
   );
 }
