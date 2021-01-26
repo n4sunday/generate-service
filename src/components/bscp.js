@@ -22,7 +22,6 @@ const Container = styled.div`
 
 function BSCP_APP() {
     const search = queryString.parse(window.location.search)
-    const [value, setValue] = useState(defaultValue);
     const [project, setProject] = useState({});
     const [container, setContainer] = useState([]);
 
@@ -61,7 +60,7 @@ function BSCP_APP() {
     return (
         <Container>
             {/*<Editor value={value} onChange={onChange} />*/}
-            <Viewer value={value} project={project} container={container} />
+            <Viewer value={defaultValue} project={project} container={container} />
         </Container>
     )
 }
