@@ -1,9 +1,9 @@
 module.exports = (PDFDocument, blobStream, project, container, iframe, fileSaver, PdfTable) => {
   // create a document and pipe to a blob
   var doc = new PDFDocument();
-  var table = new PdfTable(doc, {
-    bottomMargin: 10
-  });
+  // var table = new PdfTable(doc, {
+  //   bottomMargin: 10
+  // });
   var stream = doc.pipe(blobStream());
 
   doc.registerFont('Roboto', 'fonts/Roboto-Regular.ttf')

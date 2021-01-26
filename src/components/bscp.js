@@ -26,10 +26,6 @@ function BSCP_APP() {
     const [project, setProject] = useState({});
     const [container, setContainer] = useState([]);
 
-    // const onChange = (newValue) => {
-    //     setValue(newValue);
-    // }
-
     const renderContainer = (type, container) => {
         if (type === 'A') {
             return []
